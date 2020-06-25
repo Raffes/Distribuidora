@@ -5,7 +5,9 @@
  */
 package br.com.crud.bean;
 
+import br.com.crud.dao.LoginDAO;
 import br.com.crud.dao.UsuarioDAO;
+//import br.com.crud.modelo.Login;
 import br.com.crud.modelo.Usuario;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,11 +20,25 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class DistribuidoraBean {
     private Usuario usu;
+    //private Login login;
     private UsuarioDAO usuDAO;
+    private LoginDAO loginDAO;
     
     public DistribuidoraBean(){
         usu = new Usuario();
+        //login = new Login();
         usuDAO = new UsuarioDAO();
+        loginDAO = new LoginDAO();
+    }
+
+    
+
+    public LoginDAO getLoginDAO() {
+        return loginDAO;
+    }
+
+    public void setLoginDAO(LoginDAO loginDAO) {
+        this.loginDAO = loginDAO;
     }
 
     public Usuario getUsu() {
@@ -45,7 +61,6 @@ public class DistribuidoraBean {
         usuDAO.insertUsuario(usu);
         usu = new Usuario();
         
-       
     }
     
 }

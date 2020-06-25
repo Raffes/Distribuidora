@@ -7,12 +7,14 @@ package br.com.crud.dao;
 
 import br.com.crud.conexao.Conexao;
 import br.com.crud.modelo.Login;
-import br.com.crud.modelo.Usuario;
+//import br.com.crud.modelo.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -25,7 +27,42 @@ public class LoginDAO {
     String sql;
     
     
-    public Login selectUsuario(Login login){
+    public String verificarUsuario(Login login) throws ClassNotFoundException, SQLException{
+        String emailDB = "";
+        String senhaDB = "";
+        
+        sql = "select * from t_usuario where email = ? and senha = ?";
+        
+        try {
+            con = Conexao.openConnection();
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, login.getEmail());
+            ps.setString(2, login.getSenha());
+            
+            rs = ps.executeQuery();
+            
+            while (rs.next()){
+                emailDB = rs.getString("email");
+                senhaDB = rs.getString("senha");
+            }
+            rs.close();
+            ps.close();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        if(emailDB.equals(login.getEmail()) && senhaDB.equals(login.getSenha())){
+           HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+           session.setAttribute("email", emailDB);
+           return "home.xhtml";
+        }else{
+            return "index.xhtml";
+        }
+    }
+    
+    /*public Login selectUsuario(Login login){
         Login user = null;
         try{
         sql = "select ?, ? from t_usuario";
@@ -51,7 +88,7 @@ public class LoginDAO {
         }return user;
     }
     
-    /*public ArrayList<Login> selectLogin(Login login) {
+    public ArrayList<Login> selectLogin(Login login) {
         ArrayList<Login> listaLogin = new ArrayList<>();
         try {
             sql = "select ?, ? from t_usuario";
