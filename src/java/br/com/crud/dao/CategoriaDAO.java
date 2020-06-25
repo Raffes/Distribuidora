@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -42,4 +43,24 @@ public class CategoriaDAO {
             return false;
         }
     }
+    
+    public ArrayList<Categoria> listarCategoria(){
+        ArrayList<Categoria> listarCategoria = new ArrayList<>();
+        try {
+            sql = "select * from t_categoria";
+            con = Conexao.openConnection();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery(sql);
+            while(rs.next()){
+                Categoria cat = new Categoria();
+                cat.setCod_categoria(rs.getString("cod_categoria"));
+                cat.setCategoria(rs.getString("categoria"));
+                listarCategoria.add(cat);
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return listarCategoria;
+    }
+    
 }

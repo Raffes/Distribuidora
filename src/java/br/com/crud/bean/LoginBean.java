@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpSession;
  * @author Neve
  */
 @ManagedBean (name = "loginBean")
+@SessionScoped
 public class LoginBean {
  
     private String email;
@@ -35,7 +37,7 @@ public class LoginBean {
         HttpSession session = (HttpSession)fc.getExternalContext().getSession(false);
         session.invalidate();
         
-        return "index.xhtml";
+        return "index.xhtml?faces-redirect=true";
     }
  
     public String logar() throws ClassNotFoundException, SQLException {
@@ -69,9 +71,9 @@ public class LoginBean {
         if(emailDB.equals(this.email) && senhaDB.equals(this.senha)){
            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
            session.setAttribute("email", emailDB);
-           return "home.xhtml";
+           return "home.xhtml?faces-redirect=true";
         }else{
-            return "index.xhtml";
+            return "index.xhtml?faces-redirect=true";
         }
         
         
