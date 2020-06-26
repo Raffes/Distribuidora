@@ -12,39 +12,42 @@
             <h:panelGrid columns="2">
                 
                 <p:outputLabel value="SKU*"/>
-                <p:inputText  value="#{bean.beb.sku}" />
+                <p:inputText maxlength="10"  value="#{bean.beb.sku}" />
                 
                 <p:outputLabel value="Nome*"/>
-                <p:inputText value="#{bean.beb.nomeBebida}" />
+                <p:inputText maxlength="20" value="#{bean.beb.nomeBebida}" />
+                
+                <p:outputLabel value="cod*"/>
+                <p:inputText maxlength="20" value="#{bean.beb.cliente}" />
             
             </h:panelGrid>
             
             <h:panelGrid columns="2">
                 
                 <p:outputLabel value="Categoria"/>
-                <p:selectOneMenu id="console" value="#{bean.listCat}" var="list" style="width:125px">
-                    <f:selectItem itemLabel="#{list.categoria}" itemValue="#{list.cod_categoria}" />
-                    <f:facet name="footer">
-                        <p:separator />
-                        <h:outputText value="3 consoles" style="font-weight:bold;"/>
-                    </f:facet>
+                <p:selectOneMenu value="#{bean.beb.codCategoria}" style="width:250px">
+                    
+                    <f:selectItem itemLabel="Selecione categoria" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{bean.listCat}" var="cat" itemLabel="#{cat.categoria}" itemValue="#{cat.cod_categoria}" />
+                    
                 </p:selectOneMenu>
                 
                 
                 <p:outputLabel value="Teor Alcoólico*"/>
-                <p:inputText type="number" maxlength="3" value="#{bean.beb.teorAcoolico}"/> 
+                <p:inputText type="number" placeholder="%" maxlength="3" value="#{bean.beb.teorAcoolico}"/> 
                 
                 <p:outputLabel value="Preço*"/>
-                <p:inputText  value="#{bean.beb.preco}" />
+                <p:inputText placeholder="R$" maxlength="6" value="#{bean.beb.preco}" />
                 
                 <p:outputLabel value="Estoque*"/>
-                <p:inputText type="number" value="#{bean.beb.estoque}" />
+                <p:inputText type="number" maxlength="200" value="#{bean.beb.estoque}" />
                 
                  <p:outputLabel value="Nacionalidade*"/>
                  <p:selectOneRadio value="#{bean.beb.nacionalidade}">
                     <f:selectItem itemLabel="Nacional" itemValue="Nacional" />
                     <f:selectItem itemLabel="Internacional" itemValue="Internacional" />
                 </p:selectOneRadio>
+                 
                 </h:panelGrid>
                  <h:panelGrid columns="1">
                 
@@ -56,7 +59,7 @@
             </h:panelGrid>
                  <br/>
                  
-                <p:commandButton value="Cadastrar bebida"   update="@form" />
+                 <p:commandButton value="Cadastrar bebida" action="#{bean.addBebida()}"  update="@form" />
             
             
             

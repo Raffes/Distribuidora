@@ -17,8 +17,8 @@ public class Bebida {
     private String estoque;
     private String preco;
     private String nacionalidade;
-    private Usuario cliente;
-    private Categoria codCategoria;
+    private String cliente;
+    private String codCategoria;
 
     public String getSku() {
         return sku;
@@ -76,19 +76,19 @@ public class Bebida {
         this.preco = preco;
     }
 
-    public Usuario getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(Usuario cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
-    public Categoria getCodCategoria() {
+    public String getCodCategoria() {
         return codCategoria;
     }
 
-    public void setCodCategoria(Categoria codCategoria) {
+    public void setCodCategoria(String codCategoria) {
         this.codCategoria = codCategoria;
     }
     

@@ -37,8 +37,8 @@ public class BebidaDAO {
             ps.setString(5, bebida.getPreco());
             ps.setString(6, bebida.getEstoque());
             ps.setString(7, bebida.getNacionalidade());
-            ps.setString(8, bebida.getCliente().getCodCliente());
-            ps.setString(9, bebida.getCodCategoria().getCategoria());
+            ps.setString(8, bebida.getCliente());
+            ps.setString(9, bebida.getCodCategoria());
             
             ps.execute();
             Conexao.closeConnection();

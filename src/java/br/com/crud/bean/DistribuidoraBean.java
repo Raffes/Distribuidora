@@ -113,6 +113,7 @@ public class DistribuidoraBean {
     public void addCategoria(){
         catDAO.insertCategoria(cat);
         cat = new Categoria();
+        listCat = catDAO.listarCategoria();
     }
     
 }

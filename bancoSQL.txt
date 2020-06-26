@@ -1,0 +1,33 @@
+USUARIO, CATEGORIA e BEBIDAS
+
+create database d_distribuidora;
+
+use d_distribuidora;
+
+create table t_usuario (
+cod_cliente int(11) auto_increment primary key,
+nome varchar(30) not null,
+email varchar(50) not null,
+dataNascimento date not null,
+senha int(12) not null
+);
+
+create table t_categoria (
+cod_categoria int(11) auto_increment primary key,
+categoria varchar(20)
+);
+
+create table t_bebida(
+cod_bebidas int(11) auto_increment primary key,
+sku varchar(30) not null,
+nome_bebida varchar(20) not null,
+descricao text(200) not null,
+teor_alcoolico int(3) not null,
+preco decimal (10,2) not null,
+estoque int(200) not null,
+nacionalidade enum('Nacional','Internacional') not null,
+cod_cliente int(11),
+cod_categoria int(11),
+constraint fk_bebidaCategoria foreign key (cod_categoria) references t_categoria(cod_categoria),
+constraint fk_bebidaCliente foreign key (cod_cliente) references t_usuario(cod_cliente)
+);
