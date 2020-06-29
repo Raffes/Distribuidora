@@ -31,9 +31,10 @@ public class DistribuidoraBean {
     private BebidaDAO bebDAO;
     
     private ArrayList<Categoria> listCat;
-    private ArrayList<Bebida> bebList; 
+    private ArrayList<Bebida> bebPesquisa; 
+    private ArrayList<Categoria> catPesquisa;
     
-    private String bebidaSku;
+    private String bebidaSku, categoria;
     
     public DistribuidoraBean(){
         usu = new Usuario();
@@ -45,7 +46,8 @@ public class DistribuidoraBean {
         bebDAO = new BebidaDAO();
        
         listCat = catDAO.listarCategoria();
-        bebList = bebDAO.pesquisarBebidas(bebidaSku);
+        bebPesquisa = bebDAO.pesquisarBebidas(bebidaSku);
+        catPesquisa = catDAO.pesquisarCategoria(categoria);
     }
 
     public Usuario getUsu() {
@@ -104,12 +106,12 @@ public class DistribuidoraBean {
         this.listCat = listCat;
     }
 
-    public ArrayList<Bebida> getBebList() {
-        return bebList;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setBebList(ArrayList<Bebida> bebList) {
-        this.bebList = bebList;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getBebidaSku() {
@@ -119,6 +121,23 @@ public class DistribuidoraBean {
     public void setBebidaSku(String bebidaSku) {
         this.bebidaSku = bebidaSku;
     }
+
+    public ArrayList<Bebida> getBebPesquisa() {
+        return bebPesquisa;
+    }
+
+    public void setBebPesquisa(ArrayList<Bebida> bebPesquisa) {
+        this.bebPesquisa = bebPesquisa;
+    }
+
+    public ArrayList<Categoria> getCatPesquisa() {
+        return catPesquisa;
+    }
+
+    public void setCatPesquisa(ArrayList<Categoria> catPesquisa) {
+        this.catPesquisa = catPesquisa;
+    }
+    
     
     /*MÉTODOS*/
     
@@ -139,7 +158,11 @@ public class DistribuidoraBean {
     }
     
     public void pesquisarBebidas(){
-        bebList = bebDAO.pesquisarBebidas(bebidaSku);
+        bebPesquisa = bebDAO.pesquisarBebidas(bebidaSku);
+    }
+    
+    public void pesquisarCategoria(){
+        catPesquisa = catDAO.pesquisarCategoria(categoria);
     }
     
 }

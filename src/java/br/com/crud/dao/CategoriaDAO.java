@@ -23,6 +23,8 @@ public class CategoriaDAO {
     ResultSet rs;
     Connection con;
     
+    
+    
     public boolean insertCategoria(Categoria categoria){
         try{
             sql = "insert into t_categoria (categoria) values (?)";
@@ -61,6 +63,32 @@ public class CategoriaDAO {
             System.out.println(e);
         }
         return listarCategoria;
+    }
+    
+    public ArrayList<Categoria> pesquisarCategoria(String pCat){
+        ArrayList<Categoria> pCategoria = new ArrayList<>();
+        
+        try {
+            sql = "SELECT * FROM t_categoria c WHERE c.categoria = ? OR c.cod_categoria > 0";
+            
+            con = Conexao.openConnection();
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, pCat);
+            
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+               Categoria cate = new Categoria(); 
+               cate.setCod_categoria(rs.getString("cod_categoria"));
+               cate.setCategoria(rs.getString("categoria"));
+                
+                pCategoria.add(cate);
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return pCategoria;
     }
     
 }

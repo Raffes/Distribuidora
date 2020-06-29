@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/src/java/br/com/crud/dao/BebidaDAO.java</file>
             <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/web/bebida.xhtml</file>
-            <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/src/java/br/com/crud/modelo/Categoria.java</file>
+            <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/web/pCategoria.xhtml</file>
+            <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/web/pBebidaSku.xhtml</file>
+            <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/web/menu.xhtml</file>
+            <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/src/java/br/com/crud/dao/CategoriaDAO.java</file>
             <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/src/java/br/com/crud/bean/DistribuidoraBean.java</file>
-            <file>file:/C:/Users/Rafa/Documents/NetBeansProjects/Distribuidora2/src/java/br/com/crud/modelo/Bebida.java</file>
         </group>
     </open-files>
 </project-private>

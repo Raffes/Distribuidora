@@ -59,7 +59,7 @@ public class BebidaDAO {
             sql = "SELECT c.categoria, b.nome_bebida, b.teor_alcoolico, b.nacionalidade, b.preco, b.estoque, b.descricao, b.sku FROM t_categoria c\n" +
                   "INNER JOIN t_bebida b\n" +
                   "ON c.cod_categoria = b.cod_categoria\n" +
-                  "WHERE b.nome_bebida = ? OR b.sku = ?";
+                  "WHERE b.nome_bebida = ? OR b.sku = ? or cod_bebidas > 0";
             
             con = Conexao.openConnection();
             ps = con.prepareStatement(sql);

@@ -15,47 +15,50 @@ and open the template in the editor.
         
         <h:form>
             
-            <p:inputText placeholder="Pesquisar bebida ou sku" maxlength="10"  value="#{bean.bebidaSku}" />
-            <p:commandButton value="Pesquisar" action="#{bean.pesquisarBebidas()}"  update="@form" />
-                <h1>Saldo</h1>
+                <h1>Bebidas</h1>
+                
+                <div style="float: right;padding-bottom: 10px; padding-top: 20px">
+                    <p:inputText placeholder="Pesquisar bebida ou sku" maxlength="10"  value="#{bean.bebidaSku}" />
+                    <p:commandButton value="Pesquisar" action="#{bean.pesquisarBebidas()}"  update="@form" />
+                </div>
             
-            <p:dataTable value="#{bean.bebList}" 
-                         var="bebList" 
+                <p:dataTable value="#{bean.bebPesquisa}" 
+                         var="bebP" 
                          emptyMessage="Nenhum dado encontrado" 
                          rows="10" 
                          paginator="true"
                          paginatorPosition="bottom">
                 
                 <p:column headerText="SKU">
-                    <p:outputLabel value="#{bebList.sku}"/>
+                    <p:outputLabel value="#{bebP.sku}"/>
                 </p:column>
                 
                 <p:column headerText="Bebida">
-                    <p:outputLabel value="#{bebList.nomeBebida}"/>
+                    <p:outputLabel value="#{bebP.nomeBebida}"/>
                 </p:column>
                 
                 <p:column headerText="Teor Alcoólico">
-                    <p:outputLabel value="#{bebList.teorAcoolico}"/>
+                    <p:outputLabel value="#{bebP.teorAcoolico}"/>
                 </p:column>
                 
                 <p:column headerText="Nacionalidade">
-                    <p:outputLabel value="#{bebList.nacionalidade}"/>
+                    <p:outputLabel value="#{bebP.nacionalidade}"/>
                 </p:column>
                 
                 <p:column headerText="Preço">
-                    <p:outputLabel value="#{bebList.preco}"/>
+                    <p:outputLabel value="#{bebP.preco}"/>
                 </p:column>
                 
                 <p:column headerText="Estoque">
-                    <p:outputLabel value="#{bebList.estoque}"/>
+                    <p:outputLabel value="#{bebP.estoque}"/>
                 </p:column>
                 
                 <p:column headerText="Categoria">
-                    <p:outputLabel value="#{bebList.categoria}"/>
+                    <p:outputLabel value="#{bebP.categoria}"/>
                 </p:column>
               
                 <p:column headerText="Descrição">
-                    <p:outputLabel value="#{bebList.descricao}"/>
+                    <p:outputLabel value="#{bebP.descricao}"/>
                 </p:column>
                 
             
