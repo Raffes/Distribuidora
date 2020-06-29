@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./menu.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        
+        
+        <h:form>
+            
+            <p:inputText placeholder="Pesquisar bebida ou sku" maxlength="10"  value="#{bean.bebidaSku}" />
+            <p:commandButton value="Pesquisar" action="#{bean.pesquisarBebidas()}"  update="@form" />
+                <h1>Saldo</h1>
+            
+            <p:dataTable value="#{bean.bebList}" 
+                         var="bebList" 
+                         emptyMessage="Nenhum dado encontrado" 
+                         rows="10" 
+                         paginator="true"
+                         paginatorPosition="bottom">
+                
+                <p:column headerText="SKU">
+                    <p:outputLabel value="#{bebList.sku}"/>
+                </p:column>
+                
+                <p:column headerText="Bebida">
+                    <p:outputLabel value="#{bebList.nomeBebida}"/>
+                </p:column>
+                
+                <p:column headerText="Teor Alcoólico">
+                    <p:outputLabel value="#{bebList.teorAcoolico}"/>
+                </p:column>
+                
+                <p:column headerText="Nacionalidade">
+                    <p:outputLabel value="#{bebList.nacionalidade}"/>
+                </p:column>
+                
+                <p:column headerText="Preço">
+                    <p:outputLabel value="#{bebList.preco}"/>
+                </p:column>
+                
+                <p:column headerText="Estoque">
+                    <p:outputLabel value="#{bebList.estoque}"/>
+                </p:column>
+                
+                <p:column headerText="Categoria">
+                    <p:outputLabel value="#{bebList.categoria}"/>
+                </p:column>
+              
+                <p:column headerText="Descrição">
+                    <p:outputLabel value="#{bebList.descricao}"/>
+                </p:column>
+                
+            
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

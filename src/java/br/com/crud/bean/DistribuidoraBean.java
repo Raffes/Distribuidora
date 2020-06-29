@@ -31,6 +31,9 @@ public class DistribuidoraBean {
     private BebidaDAO bebDAO;
     
     private ArrayList<Categoria> listCat;
+    private ArrayList<Bebida> bebList; 
+    
+    private String bebidaSku;
     
     public DistribuidoraBean(){
         usu = new Usuario();
@@ -42,6 +45,7 @@ public class DistribuidoraBean {
         bebDAO = new BebidaDAO();
        
         listCat = catDAO.listarCategoria();
+        bebList = bebDAO.pesquisarBebidas(bebidaSku);
     }
 
     public Usuario getUsu() {
@@ -99,6 +103,24 @@ public class DistribuidoraBean {
     public void setListCat(ArrayList<Categoria> listCat) {
         this.listCat = listCat;
     }
+
+    public ArrayList<Bebida> getBebList() {
+        return bebList;
+    }
+
+    public void setBebList(ArrayList<Bebida> bebList) {
+        this.bebList = bebList;
+    }
+
+    public String getBebidaSku() {
+        return bebidaSku;
+    }
+
+    public void setBebidaSku(String bebidaSku) {
+        this.bebidaSku = bebidaSku;
+    }
+    
+    /*MÉTODOS*/
     
     public void addUsuario(){
         usuDAO.insertUsuario(usu);
@@ -114,6 +136,10 @@ public class DistribuidoraBean {
         catDAO.insertCategoria(cat);
         cat = new Categoria();
         listCat = catDAO.listarCategoria();
+    }
+    
+    public void pesquisarBebidas(){
+        bebList = bebDAO.pesquisarBebidas(bebidaSku);
     }
     
 }

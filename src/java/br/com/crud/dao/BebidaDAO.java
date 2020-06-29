@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -50,4 +51,42 @@ public class BebidaDAO {
             return false;
         }
     }
+    
+    public ArrayList<Bebida> pesquisarBebidas(String bebidaSku){
+        ArrayList<Bebida> pBebidas = new ArrayList<>();
+        
+        try {
+            sql = "SELECT c.categoria, b.nome_bebida, b.teor_alcoolico, b.nacionalidade, b.preco, b.estoque, b.descricao, b.sku FROM t_categoria c\n" +
+                  "INNER JOIN t_bebida b\n" +
+                  "ON c.cod_categoria = b.cod_categoria\n" +
+                  "WHERE b.nome_bebida = ? OR b.sku = ?";
+            
+            con = Conexao.openConnection();
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, bebidaSku);
+            ps.setString(2, bebidaSku);
+            
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Bebida bebList = new Bebida();
+                
+                bebList.setCategoria(rs.getString("categoria"));
+                bebList.setNomeBebida(rs.getString("nome_bebida"));
+                bebList.setTeorAcoolico(rs.getString("teor_alcoolico"));
+                bebList.setNacionalidade(rs.getString("nacionalidade"));
+                bebList.setPreco(rs.getString("preco"));
+                bebList.setEstoque(rs.getString("estoque"));
+                bebList.setDescricao(rs.getString("descricao"));
+                bebList.setSku(rs.getString("sku"));
+                
+                pBebidas.add(bebList);
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return pBebidas;
+    }
+    
 }
