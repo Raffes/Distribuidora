@@ -11,7 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -24,7 +23,9 @@ public class UsuarioDAO {
     private String sql;
     
     public int insertUsuario(Usuario usuario){
-        try{
+        
+       
+            try{
             sql = "insert into t_usuario(nome, email, dataNascimento, senha) VALUES (? ,?, STR_TO_DATE(?, '%d/%m/%Y'), MD5(?))";
             con = Conexao.openConnection();
             
@@ -44,8 +45,8 @@ public class UsuarioDAO {
             
             return 0;
         }
+        
     }
-    
     
     
     

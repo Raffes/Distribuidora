@@ -27,7 +27,7 @@
                 
                 <h:panelGrid columns="1" >
                     <p:outputLabel value="Email"/>
-                    <p:inputText value="#{loginBean.email}" required="true"/>
+                    <p:inputText type="email" value="#{loginBean.email}" required="true"/>
                         
                     <p:outputLabel value="Senha"/>
                     <p:password id="nonFeedback"  value="#{loginBean.senha}" required="true"/>
@@ -38,6 +38,8 @@
                      
             </p:dialog> 
         <!--========================================================FIM DO LOGIN========================================================-->
+        
+        
         
         <!--=================================================CADASTRO DO USUARIO========================================================-->
         </h:form>
@@ -70,11 +72,23 @@
                     
                         
                 </h:panelGrid>
-                <p:commandButton value="Salvar" action="#{bean.addUsuario()}"  update="matchGrid"/>
+                <p:commandButton value="Salvar" action="#{bean.addUsuario()}"  update="matchGrid" oncomplete="PF('validarCadastro').show()"/>
                      
             </p:dialog> 
         
         <!--==========================================FIM DO CADASTRO DO USUARIO========================================================-->
+        
+        <!--====================================================VALIDAR CADASTRO========================================================-->
+        
+        <p:dialog widgetVar="validarCadastro" resizable="false" style="min-width: 300px">
+                
+              
+            <p:outputLabel value="Cadastro feito com sucesso, faça login para acessar"/>
+                 
+                     
+        </p:dialog> 
+        
+        <!--=============================================FIM DO VALIDAR CADASTRO========================================================-->
         </h:form>
     </h:body>
 </html>

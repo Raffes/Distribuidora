@@ -11,6 +11,7 @@ import br.com.crud.dao.UsuarioDAO;
 import br.com.crud.modelo.Bebida;
 import br.com.crud.modelo.Categoria;
 import br.com.crud.modelo.Usuario;
+import br.com.crud.validacao.ValidacaoCad;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -137,13 +138,17 @@ public class DistribuidoraBean {
     public void setCatPesquisa(ArrayList<Categoria> catPesquisa) {
         this.catPesquisa = catPesquisa;
     }
+
     
+   
     
     /*MÉTODOS*/
     
+    /*===================================================================INSERTS====================================================================*/
     public void addUsuario(){
         usuDAO.insertUsuario(usu);
         usu = new Usuario();
+       
     }
     
     public void addBebida(){
@@ -157,6 +162,10 @@ public class DistribuidoraBean {
         listCat = catDAO.listarCategoria();
     }
     
+    /*===========================================================FIM DOS INSERTS====================================================================*/
+    
+    /*===================================================================SELECTS====================================================================*/
+    
     public void pesquisarBebidas(){
         bebPesquisa = bebDAO.pesquisarBebidas(bebidaSku);
     }
@@ -165,4 +174,13 @@ public class DistribuidoraBean {
         catPesquisa = catDAO.pesquisarCategoria(categoria);
     }
     
+    /*===========================================================FIM DOS SELECTS====================================================================*/
+    
+    /*===================================================VALIDAÇÃO DO FORMULARIO====================================================================
+    
+    
+    
+    
+    
+    /*============================================FIM DA VALIDAÇÃO DO FORMULARIO====================================================================*/
 }
