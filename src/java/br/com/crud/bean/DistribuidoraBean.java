@@ -26,6 +26,7 @@ public class DistribuidoraBean {
     private Usuario usu;
     private Categoria cat;
     private Bebida beb;
+    private ValidacaoCad val;
     
     private UsuarioDAO usuDAO;
     private CategoriaDAO catDAO;
@@ -35,12 +36,13 @@ public class DistribuidoraBean {
     private ArrayList<Bebida> bebPesquisa; 
     private ArrayList<Categoria> catPesquisa;
     
-    private String bebidaSku, categoria;
+    private String bebidaSku, categoria, valCad;
     
     public DistribuidoraBean(){
         usu = new Usuario();
         cat = new Categoria();
         beb = new Bebida();
+        val = new ValidacaoCad();
         
         usuDAO = new UsuarioDAO();
         catDAO = new CategoriaDAO();
@@ -139,6 +141,22 @@ public class DistribuidoraBean {
         this.catPesquisa = catPesquisa;
     }
 
+    public ValidacaoCad getVal() {
+        return val;
+    }
+
+    public void setVal(ValidacaoCad val) {
+        this.val = val;
+    }
+
+    public String getValCad() {
+        return valCad;
+    }
+
+    public void setValCad(String valCad) {
+        this.valCad = valCad;
+    }
+
     
    
     
@@ -146,8 +164,16 @@ public class DistribuidoraBean {
     
     /*===================================================================INSERTS====================================================================*/
     public void addUsuario(){
-        usuDAO.insertUsuario(usu);
-        usu = new Usuario();
+        int result = val.validarUsuario(usu);
+        
+        
+        if(result != 0){
+            usuDAO.insertUsuario(usu);
+            usu = new Usuario();
+            this.valCad = "sucesso";
+        }else{
+            this.valCad = "erro";
+        }
        
     }
     
@@ -176,7 +202,7 @@ public class DistribuidoraBean {
     
     /*===========================================================FIM DOS SELECTS====================================================================*/
     
-    /*===================================================VALIDAÇÃO DO FORMULARIO====================================================================
+    /*===================================================VALIDAÇÃO DO FORMULARIO====================================================================*/
     
     
     
