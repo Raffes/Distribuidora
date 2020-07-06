@@ -16,12 +16,12 @@ public class ValidacaoCad {
 
     public int validarUsuario(Usuario valUsuario){
         
-        if(valUsuario.getSenha().length() > 6 | valUsuario.getSenha().length() < 6){
+        if(valUsuario.getSenha().length() > 0 && valUsuario.getSenha().length() <= 6){
             
-            return 0;
+             return 1;
         }else{
             
-            return 1;
+             return 0;
         }
           
     }
