@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <meta http-equiv="dark-hive" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/css/layout.css"/>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+        
+        <!--===============================================================LOGIN========================================================-->
+         <div class="div_blocoAutenticacao">   
+            <div class="div_blocoAutenticacao div_autenticacao2">    
+                <h:panelGrid columns="1" >
+                    <p:outputLabel value="Email"/>
+                    <p:inputText type="email" value="#{loginBean.email}" required="true"/>
+                        
+                    <p:outputLabel value="Senha"/>
+                    <p:password id="nonFeedback"  value="#{loginBean.senha}" required="true"/>
+                        
+                    <p:commandButton value="Acessar" action="#{loginBean.logar()}"/>
+                        
+                </h:panelGrid>
+                     
+            </div>
+         </div>
+        <!--========================================================FIM DO LOGIN========================================================-->
+        
+        
+        
+        </h:form>
+    </h:body>
+</html>
+

@@ -14,94 +14,15 @@
         <div class="div_blocoAutenticacao">
             <div class="div_autenticacao1">
                 <div class="div_autenticacao2">
-                    <p:commandButton value="Acessar" oncomplete="PF('acesso').show()" />
-                    <p:commandButton value="Cadastrar" oncomplete="PF('cadastrar').show()"/>
+                    <h:form>
+                        <p:commandButton value="Acessar"  action="login.xhtml?faces-redirect=true" />
+                        <p:commandButton value="Cadastrar"  action="cadUsuario.xhtml?faces-redirect=true"/>
+                    </h:form>
                 </div>
             </div>
         </div>
         <!--===============================================FIM DA TELA DE INICIO========================================================-->
         
-        <h:form>
-        
-        <!--===============================================================LOGIN========================================================-->
-            <p:dialog widgetVar="acesso" header="Login" resizable="false" style="min-width: 300px">
-                
-                <h:panelGrid columns="1" >
-                    <p:outputLabel value="Email"/>
-                    <p:inputText type="email" value="#{loginBean.email}" required="true"/>
-                        
-                    <p:outputLabel value="Senha"/>
-                    <p:password id="nonFeedback"  value="#{loginBean.senha}" required="true"/>
-                        
-                    <p:commandButton value="Acessar" action="#{loginBean.logar()}"/>
-                        
-                </h:panelGrid>
-                     
-            </p:dialog> 
-        <!--========================================================FIM DO LOGIN========================================================-->
-        
-        
-        
-        <!--=================================================CADASTRO DO USUARIO========================================================-->
-        </h:form>
-        <h:form>
-            <p:dialog widgetVar="cadastrar" header="Cadastro de usuário" resizable="false" style="min-width: 300px">
-                
-                <!--<h:panelGrid columns="1">
-                    <p:outputLabel value="Nome*"/>
-                    <p:inputText label="nome" maxlength="30" id="nome" value="#{bean.usu.nome}" required="true" requiredMessage="Por favor, inserir o nome."/>
-                    
-                 </h:panelGrid>
-                        
-                <h:panelGrid columns="1" >
-                    <p:outputLabel value="Email*"/>
-                    <p:inputText id="email" label="email" maxlength="50" required="true" requiredMessage="Por favor, inserir o email."
-                                 validatorMessage="Formato de email invalido" value="#{bean.usu.email}">
-                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                    </p:inputText>
-                    
-                    <p:outputLabel value="Data de Nascimento*"/>
-                    <p:inputMask id="date" value="#{bean.usu.dataNascimento}" mask="99/99/9999" required="true" requiredMessage="Por favor, inserir a data."/>
-                    
-                </h:panelGrid>-->
- 
-                 <h:panelGrid columns="1" id="matchGrid" cellpadding="5">  
-                    <h:outputLabel for="pwd1" value="Senha*" />
-                    <p:password id="pwd1" value="#{bean.usu.senha}" match="pwd2" feedback="true" promptLabel="Por favor, digitar senha" required="true" >
-                        <f:validateLength minimum="6" />
-                        
-                    </p:password>
-                   
-                    
-                    <h:outputLabel for="pwd2" value="Confirmação da senha*" />
-                    <p:password id="pwd2" value="#{bean.usu.senha}" label="Password 2" required="true">
-                        <f:validateLength minimum="6" />
-                    </p:password>
-                        
-                    
-                
-                </h:panelGrid>
-                <p:commandButton value="Salvar" process="@form" action="#{bean.addUsuario()}"  update="matchGrid" oncomplete="PF('validarCadastro').show()"/>
-                     
-            </p:dialog> 
-        
-        <!--==========================================FIM DO CADASTRO DO USUARIO========================================================-->
-        
-        <!--====================================================VALIDAR CADASTRO========================================================-->
-        
-        <p:dialog widgetVar="validarCadastro" resizable="false" style="min-width: 300px">
-                
-              
-            <h:message for="nome"/><br></br>
-            <h:message for="email"/><br></br>
-            <h:message for="date"/><br></br>
-            
-                 
-                     
-        </p:dialog> 
-        
-        <!--=============================================FIM DO VALIDAR CADASTRO========================================================-->
-        </h:form>
     </h:body>
 </html>
 

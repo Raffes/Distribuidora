@@ -203,7 +203,17 @@ public class DistribuidoraBean {
     /*===========================================================FIM DOS SELECTS====================================================================*/
     
     /*===================================================VALIDAÇÃO DO FORMULARIO====================================================================*/
-    
+    public String val(){
+        
+        int result = val.validarUsuario(usu);
+        
+        if(result != 0){
+            return "sucesso";
+        }else{
+            return "erro";
+        }
+        
+    }
     
     
     
