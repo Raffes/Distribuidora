@@ -7,46 +7,53 @@
     
     <h:head>
         <meta http-equiv="dark-hive" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="/css/layout.css"/>
+        <h:outputStylesheet name="/css/cadUsuarioCSS.css"/>
     </h:head>
-    <h:body>
+    <h:body class="body_cadastro">
         <!--=================================================CADASTRO DO USUARIO========================================================-->
         
         <h:form>
-         <div class="div_blocoAutenticacao">   
+         <div class="div_blocoCadastro">   
              
             <div class="div_autenticacaoCad">
-                <div class="cadastro">Cadastro</div>
+                <div class="cadastro">
+                    <p class="tituloCad">Cadastro</p>
+                </div>
+                
                 <div class="div_autenticacao3">
                 <h:panelGrid columns="1" id="matchGrid" cellpadding="5">
-                    <p:outputLabel value="Nome*"/>
+                    <p:outputLabel class="textoCad" value="Nome*"/>
                     <p:inputText label="nome" maxlength="30" id="nome" value="#{bean.usu.nome}" required="true" requiredMessage="Por favor, inserir o nome."/>
-                    <h:message for="nome"/>
-                    <p:outputLabel value="Email*"/>
+                    <h:message class="msgValidacao" for="nome"/>
+                    
+                    <p:outputLabel class="textoCad" value="Email*"/>
                     <p:inputText id="email" label="email" maxlength="50" required="true" requiredMessage="Por favor, inserir o email."
                                  validatorMessage="Formato de email invalido" value="#{bean.usu.email}">
                         <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                     </p:inputText>
-                    <h:message for="email"/>
+                    <h:message class="msgValidacao" for="email"/>
                     
-                    <p:outputLabel value="Data de Nascimento*"/>
+                    <p:outputLabel class="textoCad" value="Data de Nascimento*"/>
                     <p:inputMask id="data" value="#{bean.usu.dataNascimento}" mask="99/99/9999" required="true" requiredMessage="Por favor, inserir a data."/>
-                    <h:message for="data"/>
+                    <h:message class="msgValidacao" for="data"/>
                     
                 
-                    <h:outputLabel for="pwd1" value="Senha*" />
-                    <p:password id="pwd1" value="#{bean.usu.senha}" match="pwd2" feedback="true" promptLabel="Por favor, digitar senha" required="true" >
+                    <h:outputLabel class="textoCad" value="Senha*" />
+                    <p:password label="senha" id="pwd1" value="#{bean.usu.senha}" match="pwd2" feedback="true" promptLabel="Por favor, digitar senha" 
+                                required="true" requiredMessage="Por favor, insira a senha."
+                                 validatorMessage="A senha deve ter no minimo 6 dígitos">
                         <f:validateLength minimum="6" />
-                        
                     </p:password>
+                    <h:message class="msgValidacao" for="pwd1"/>
                    
-                    
-                    <h:outputLabel for="pwd2" value="Confirmação da senha*" />
-                    <p:password id="pwd2" value="#{bean.usu.senha}" label="Password 2" required="true">
+                    <h:outputLabel class="textoCad" value="Confirmação da senha*" />
+                    <p:password id="pwd2" value="#{bean.usu.senha}" label="Password 2" 
+                                required="true" requiredMessage="Por favor, insira a confirnação da senha."
+                                 validatorMessage="A senha deve ter no minimo 6 dígitos">
                         <f:validateLength minimum="6" />
                     </p:password>
-                        
-                    <p:link outcome="login.xhtml" value="Login"/>
+                    <h:message class="msgValidacao" for="pwd2"/>    
+                    <p:link class="loginCad" outcome="login.xhtml" value="Já tem cadastro? Login"/>
                     
                     <p:commandButton value="Salvar" action="#{bean.addUsuario()}"  update="matchGrid"/>
                 
