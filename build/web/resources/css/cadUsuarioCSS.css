@@ -1,0 +1,63 @@
+/*========================================================== Estilo do cadastro====================================================================*/
+.div_autenticacaoCad {
+    height: 41px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 20px 20px 0px 0px;
+    background-color: gray;
+}
+
+.div_autenticacao3{
+    height: 610px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 0px 0px 20px 20px;
+    background-color: white;
+}
+
+.body_cadastro {
+    background-color: #F2ECFF;
+}
+
+.div_blocoCadastro{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cadastro {
+    
+    font-size: 18px;
+    font-weight: 300;
+    color: white;
+}
+
+.loginCad {
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: none;
+}
+
+.msgValidacao {
+    color: red;
+}
+
+.tituloCad {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.textoCad{
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+/*========================================================== Fim do estilo do cadastro====================================================================*/
+
