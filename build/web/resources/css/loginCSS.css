@@ -1,0 +1,53 @@
+/*========================================================== folha de stilo do login ====================================================================*/
+
+.body_login {
+    background-color: #F2ECFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #F2ECFF;
+}
+
+.div_login {
+    border-radius: 20px 20px 0px 0px;
+    border: 1px solid black; 
+    background-color: gray;
+}
+
+.div_login > p {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.div_loginConteudo {
+    border: 1px solid black;
+    border-radius: 0px 0px 20px 20px ;
+    border-top: none;
+    height: 300px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: white;
+}
+
+.msgValidacaoLogin {
+   color: red;
+}
+
+.cad {
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: none;
+}
+
+.textoLog{
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+/*==================================================== Fim da folha de estilo do login====================================================================*/
