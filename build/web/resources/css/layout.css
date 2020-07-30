@@ -28,33 +28,8 @@
     background-color: white;
 }
 
-.div_autenticacaoCad {
-    height: 100px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 800px;
-    border: 1px solid black;
-    border-radius: 20px 20px 0px 0px;
-    background-color: white;
-}
 
-.div_autenticacao3{
-    height: 500px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 800px;
-    border: 1px solid black;
-    border-radius: 0px 0px 20px 20px;
-    background-color: white;
-}
-
-.cadastro {
-    height: 200px;
-    border-bottom: 1px solid black;
-}
-  
+/*========================================================== Layout da aplicação====================================================================*/
 #top {
     position: relative;
     background-color: #036fab;

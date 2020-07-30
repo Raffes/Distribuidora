@@ -11,7 +11,6 @@ import br.com.crud.dao.UsuarioDAO;
 import br.com.crud.modelo.Bebida;
 import br.com.crud.modelo.Categoria;
 import br.com.crud.modelo.Usuario;
-import br.com.crud.validacao.ValidacaoCad;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -26,7 +25,6 @@ public class DistribuidoraBean {
     private Usuario usu;
     private Categoria cat;
     private Bebida beb;
-    private ValidacaoCad val;
     
     private UsuarioDAO usuDAO;
     private CategoriaDAO catDAO;
@@ -42,7 +40,6 @@ public class DistribuidoraBean {
         usu = new Usuario();
         cat = new Categoria();
         beb = new Bebida();
-        val = new ValidacaoCad();
         
         usuDAO = new UsuarioDAO();
         catDAO = new CategoriaDAO();
@@ -141,13 +138,7 @@ public class DistribuidoraBean {
         this.catPesquisa = catPesquisa;
     }
 
-    public ValidacaoCad getVal() {
-        return val;
-    }
-
-    public void setVal(ValidacaoCad val) {
-        this.val = val;
-    }
+    
 
     public String getValCad() {
         return valCad;
@@ -164,17 +155,9 @@ public class DistribuidoraBean {
     
     /*===================================================================INSERTS====================================================================*/
     public void addUsuario(){
-        int result = val.validarUsuario(usu);
-        
-        
-        if(result != 0){
-            usuDAO.insertUsuario(usu);
-            usu = new Usuario();
-            this.valCad = "sucesso";
-        }else{
-            this.valCad = "erro";
-        }
-       
+        usuDAO.insertUsuario(usu);
+        usu = new Usuario();
+         
     }
     
     public void addBebida(){
@@ -202,21 +185,5 @@ public class DistribuidoraBean {
     
     /*===========================================================FIM DOS SELECTS====================================================================*/
     
-    /*===================================================VALIDAÇÃO DO FORMULARIO====================================================================*/
-    public String val(){
-        
-        int result = val.validarUsuario(usu);
-        
-        if(result != 0){
-            return "sucesso";
-        }else{
-            return "erro";
-        }
-        
-    }
-    
-    
-    
-    
-    /*============================================FIM DA VALIDAÇÃO DO FORMULARIO====================================================================*/
+   
 }

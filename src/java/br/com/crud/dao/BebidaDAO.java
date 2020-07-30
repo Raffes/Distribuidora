@@ -5,6 +5,7 @@
  */
 package br.com.crud.dao;
 
+import br.com.crud.bean.LoginBean;
 import br.com.crud.conexao.Conexao;
 import br.com.crud.modelo.Bebida;
 import java.sql.Connection;
@@ -22,6 +23,7 @@ public class BebidaDAO {
     PreparedStatement ps;
     ResultSet rs;
     Connection con;
+    LoginBean cod_usu;
     
     public boolean insertBebida(Bebida bebida){
         try{

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <meta http-equiv="dark-hive" content="text/html; charset=UTF-8" />
+        <!--<h:outputStylesheet name="/css/layout.css"/>
+        <h:outputStylesheet name="/css/cadUsuarioCSS.css"/>-->
+        <h:outputStylesheet name="/css/loginCSS.css"/>
+    </h:head>
+    <h:body class="body_login">
+        
+        <h:form>
+        
+        <!--===============================================================LOGIN========================================================-->
+             <div class="div_login">
+                <p>Login</p> 
+             </div>
+             <div class="div_loginConteudo">
+                <h:panelGrid columns="1" >
+                    
+                        <p:outputLabel class="textoLog" value="Email"/>
+                        <p:inputText id="email" label="email" maxlength="50" type="email" value="#{loginBean.email}" required="true" requiredMessage="Por favor, inserir o email."/>
+                        <h:message class="msgValidacaoLogin" for="email"/> 
+                   
+                    <p:outputLabel class="textoLog" value="Senha"/>
+                    
+                    <p:password label="senha" id="senha" value="#{loginBean.senha}"
+                                required="true" requiredMessage="Por favor, digite a senha."
+                                 validatorMessage="Senha invalida">
+                        <f:validateLength minimum="6" />
+                    </p:password>
+                    <h:message class="msgValidacaoLogin" for="senha"/>
+                        
+                    <p:link class="cad" outcome="cadUsuario.xhtml" value="Ainda não tem cadastro? Cadastro"/>
+                    
+                    <p:commandButton value="Acessar" update="@form" action="#{loginBean.logar()}"/>
+                        
+                </h:panelGrid>
+                 
+             </div>
+         
+        <!--========================================================FIM DO LOGIN========================================================-->
+        
+        
+        
+        </h:form>
+    </h:body>
+</html>
+

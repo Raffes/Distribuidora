@@ -26,7 +26,7 @@ public class UsuarioDAO {
         
        
             try{
-            sql = "insert into t_usuario(nome, email, dataNascimento, senha) VALUES (? ,?, STR_TO_DATE(?, '%d/%m/%Y'), MD5(?))";
+            sql = "insert into t_usuario(nome, email, dataNascimento, senha) VALUES (? ,?, STR_TO_DATE(?, '%d/%m/%Y'), ?)";
             con = Conexao.openConnection();
             
             ps = con.prepareStatement(sql);

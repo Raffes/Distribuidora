@@ -1,0 +1,55 @@
+/*========================================================== Folha de estilo do cadastro====================================================================*/
+
+.body_cadastro{
+    background-color: #F2ECFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    background-color: #F2ECFF;
+}
+
+.div_cadastro {
+    border-radius: 20px 20px 0px 0px;
+    border: 1px solid black; 
+    background-color: gray;
+}
+
+.div_cadastro > p {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.div_cadConteudo {
+    border: 1px solid black;
+    border-radius: 0px 0px 20px 20px ;
+    border-top: none;
+    height: 600px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: white;
+}
+
+.msgValidacaoCad {
+    color: red;
+}
+
+.log {
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: none;
+}
+
+.textoCad{
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 300;
+}
+
+
+/*========================================================== Fim da folha de estilo do cadastro====================================================================*/
+

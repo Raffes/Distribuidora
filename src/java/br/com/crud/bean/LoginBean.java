@@ -6,6 +6,7 @@
 package br.com.crud.bean;
 
 import br.com.crud.conexao.Conexao;
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,8 +23,10 @@ import javax.servlet.http.HttpSession;
  */
 @ManagedBean (name = "loginBean")
 @SessionScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
  
+    private String cod_usu;
+    private String usuario;
     private String email;
     private String senha;
     String sql;
@@ -33,12 +36,11 @@ public class LoginBean {
     
     
     public String deslogar(){
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession)fc.getExternalContext().getSession(false);
-        session.invalidate();
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         
-        return "index.xhtml?faces-redirect=true";
+        return "/security/index.xhtml?faces-redirect=true";
     }
+    
  
     public String logar() throws ClassNotFoundException, SQLException {
         
@@ -59,6 +61,8 @@ public class LoginBean {
             rs = ps.executeQuery();
             
             while (rs.next()){
+                this.cod_usu = rs.getString("cod_cliente");
+                this.usuario = rs.getString("nome");
                 emailDB = rs.getString("email");
                 senhaDB = rs.getString("senha");
             }
@@ -71,12 +75,28 @@ public class LoginBean {
         if(emailDB.equals(this.email) && senhaDB.equals(this.senha)){
            HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
            session.setAttribute("email", emailDB);
-           return "home.xhtml?faces-redirect=true";
+           return "/app/home.xhtml?faces-redirect=true";
         }else{
-            return "index.xhtml?faces-redirect=true";
+            return "/security/login.xhtml?faces-redirect=true";
         }
         
         
+    }
+
+    public String getCod_usu() {
+        return cod_usu;
+    }
+
+    public void setCod_usu(String cod_usu) {
+        this.cod_usu = cod_usu;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getEmail() {
